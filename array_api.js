@@ -106,12 +106,41 @@ const students = [
 console.clear();
 // 9. compute students' average score
 {
-  const result = function (prev, curr) {
-    console.log(prev.score);
-    console.log(result);
-  };
+  const result = students.reduce((prev, curr) => prev + curr.score, 0);
+  console.log(result);
 }
 
+{
+  const av = students.reduce((prev, curr) => {
+    console.log("------------------");
+    console.log(prev);
+    console.log(curr);
+    return prev + curr.score / 2;
+  }, 0);
+  console.log(av);
+}
+console.clear();
+{
+  const av2 = students.reduce(function (prev, curr) {
+    console.log("--------------------------");
+    console.log(prev);
+    console.log(curr);
+    return curr;
+  });
+}
 // 10. make a string containing all the scores
-
+{
+  const score = students
+    .map((student) => student.score)
+    .filter((score) => score >= 50)
+    .join();
+  console.log(score);
+}
 // sort
+{
+  const scoreList = students
+    .map((student) => student.score)
+    .sort((a, b) => a - b)
+    .join();
+  console.log(scoreList);
+}
